@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title>Nico's Hub</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="banner">
+			<div class="navbar">
+				<img src="logo.png" class="logo">
+				<div class="navtext">
+					<h1> Where to go? </h1>
+				</div>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/">Drawings</a></li>
+					<li><a href="/">Projects</a></li>
+					<li><a href="/">Info</a></li>
+				</ul>
+			</div>
+			
+			<div class="player">
+				<h1>Chill and relax</h1>
+				
+				<audio id="audioPlayer" controls>
+					<source src="track1.mp3" type="audio/mp3">
+					
+					Your browser does not support mp3 audio files.
+				</audio>
+				<script>
+					// Get the audio element
+					var audioPlayer = document.getElementById('audioPlayer');
+					
+					// Set the current track index
+					var currentTrackIndex = 0;
+					
+					// Array of track sources
+					var trackSources = [
+						'track1.mp3',
+						'track2.mp3',
+						'track3.mp3'
+						// Add more track sources as needed
+					];
+					
+					// Function to play the current track
+					function play() {
+						audioPlayer.play();
+					}
+					
+					// Function to play the next track
+					function next() {
+					    // Stop the current track
+					    audioPlayer.pause();
+					    audioPlayer.currentTime = 0;
+
+					   // Increment the current track index
+					    currentTrackIndex = (currentTrackIndex + 1) % trackSources.length;
+					
+					    // Set the new track source
+					    audioPlayer.src = trackSources[currentTrackIndex];
+					
+					    // Play the new track
+					    audioPlayer.play();
+					}
+
+				    // Function to pause the current track
+				    function pause() {
+				        audioPlayer.pause();
+				    }
+					
+				    // Function to stop and reset to the first track
+				    function stop() {
+				        // Stop the current track
+				        audioPlayer.pause();
+				        audioPlayer.currentTime = 0;
+
+				        // Set the first track as the current track
+				        currentTrackIndex = 0;
+				        audioPlayer.src = trackSources[currentTrackIndex];
+				    }
+				</script>
+				<button type="button" onclick=play()>Play</button>
+				<button type="button" onclick=next()>Next</button>
+				<button type="button" onclick=pause()>Pause</button>
+				<button type="button" onclick=stop()>Stop</button>
+			</div>
+		</div>
+		
+	</body>
+</html>
